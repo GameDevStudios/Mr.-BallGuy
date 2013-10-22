@@ -1,6 +1,6 @@
 --[[
 
-Mr. BallGuy - Version 1.1-ALPHA
+Mr. BallGuy - Version 1.1-A0.1
 
 Created by Eamonn Rea
 
@@ -27,6 +27,8 @@ local gamestates = {
 local bgImage = lg.newImage("assets/img/background.png")
 local bg = lg.newQuad(0, 0, screenWidth, screenHeight, bgImage:getWidth(), bgImage:getHeight())
 
+local logo = lg.newImage("assets/img/logo.png")
+
 bgImage:setWrap('repeat', 'repeat')
 
 function love.load()
@@ -34,11 +36,13 @@ function love.load()
 end
 
 function love.update(dt)
-	
+
 end
 
 function love.draw()
 	love.graphics.drawq(bgImage, bg, 0, 0)
+
+	love.graphics.draw(logo, screenWidth/2-logo:getWidth()/2, screenHeight/2-logo:getHeight()/2-200)
 end
 
 function love.focus(bool)
