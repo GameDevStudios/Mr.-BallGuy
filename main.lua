@@ -8,6 +8,15 @@ Created by Eamonn Rea
 
 License can be found in assets/misc/license.txt
 
+Gamestate list:
+
+• startmenu
+• playing
+• credits
+• options
+• help
+• paused
+
 ]]
 
 require("assets/libs/loveframes")
@@ -23,6 +32,7 @@ local screenWidth = love.graphics.getWidth()
 local screenHeight = love.graphics.getHeight()
 
 gamestate = "startmenu"
+loveframes.SetState("startmenu")
 
 local bgImage = lg.newImage("assets/img/background.png")
 local bg = lg.newQuad(0, 0, screenWidth, screenHeight, bgImage:getWidth(), bgImage:getHeight())
@@ -67,10 +77,16 @@ function love.draw()
 end
 
 function love.focus(bool)
-
+	if gamestate == "playing" and bool then 
+		gamestate = "paused"
+	end
 end
 
 function love.keypressed(key, unicode)
+	if key == 'q' or key == 'escape' then 
+		love.quit()
+	end
+
 	loveframes.keypressed(key, unicode)
 end
 

@@ -11,35 +11,44 @@ function mainmenu()
 	startbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2-100)
 	startbutton:SetSize(150, 30)
 	startbutton:SetText("Play")
+	startbutton:SetState("startmenu")
 	startbutton.OnClick = function(object) 
 		gamestate = "playing"
+		loveframes.SetState("playing")
 	end
 
 	creditsbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2-50)
 	creditsbutton:SetSize(150, 30)
 	creditsbutton:SetText("Credits")
+	creditsbutton:SetState("startmenu")
 	creditsbutton.OnClick = function(object)
 		gamestate = "credits"
+		loveframes.SetState("credits")
 	end
 
 
 	optionsbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2)
 	optionsbutton:SetSize(150, 30)
 	optionsbutton:SetText("Options")
+	optionsbutton:SetState("startmenu")
 	optionsbutton.OnClick = function(object)
 		gamestate = "options"
+		loveframes.SetState("options")
 	end
 
 	helpbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2+50)
 	helpbutton:SetSize(150, 30)
 	helpbutton:SetText("Help")
+	helpbutton:SetState("startmenu")
 	helpbutton.OnClick = function(object)
 		gamestate = "help"
+		loveframes.SetState("help")
 	end
 
 	quitbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2+200)
 	quitbutton:SetSize(150, 30)
 	quitbutton:SetText("Quit")
+	quitbutton:SetState("startmenu")
 	quitbutton.OnClick = function(object)
 		love.quit()
 	end
