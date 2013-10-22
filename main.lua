@@ -34,10 +34,9 @@ local logo = lg.newImage("assets/img/logo.png")
 bgImage:setWrap('repeat', 'repeat')
 
 function love.load()
-	print(love._version)
-
-	if love._version == "0.9.0" then 
-		--love.window.setMode(screenWidth, screenHeight, { resizable=true })
+	if love._version == "0.9.0" then
+		love.window.setMode(screenWidth, screenHeight, { resizable=true })
+		love.window.setTitle("Mr. BallGuy")
 	end
 
 	mainmenu() -- Calls the mainmenu() function from guis.lua
@@ -48,7 +47,7 @@ function love.load()
 end
 
 function love.update(dt)
-	--bgImage:setViewport(0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+	--bg:setViewport(0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
 	loveframes.update(dt)
 end
