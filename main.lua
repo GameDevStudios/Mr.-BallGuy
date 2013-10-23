@@ -32,10 +32,10 @@ local screenWidth = love.graphics.getWidth()
 local screenHeight = love.graphics.getHeight()
 
 gamestate = "startmenu"
-loveframes.SetState("startmenu")
+loveframes.SetState("startmenu") 
 
 local bgImage = lg.newImage("assets/img/background.png")
-local bg = lg.newQuad(0, 0, screenWidth, screenHeight, bgImage:getWidth(), bgImage:getHeight())
+local bg = lg.newQuad(0, 0, lg.getWidth(), lg.getHeight(), bgImage:getWidth(), bgImage:getHeight())
 
 local bgm = la.newSource("assets/sfx/01 A Night Of Dizzy Spells.mp3")
 
@@ -57,7 +57,7 @@ function love.load()
 end
 
 function love.update(dt)
-	--bg:setViewport(0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+	bg:setViewport(0, 0, lg.getWidth(), lg.getHeight())
 
 	loveframes.update(dt)
 end
@@ -70,7 +70,7 @@ function love.draw()
 			love.graphics.drawq(bgImage, bg, 0, 0)
 		end
 
-		love.graphics.draw(logo, screenWidth/2-logo:getWidth()/2, screenHeight/2-logo:getHeight()/2-200)
+		love.graphics.draw(logo, lg.getWidth()/2-logo:getWidth()/2, lg.getHeight()/2-logo:getHeight()/2-200)
 	end
 
 	loveframes.draw()
