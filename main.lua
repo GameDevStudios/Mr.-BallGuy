@@ -57,6 +57,8 @@ function love.load()
 	lm.setVisible(false)
 
 	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
+	credits() -- Calls the credits() function from guis.lua, which generates all the GUI elements in the credits state
+
 	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state
 	createProfile() -- Calls the createProfile() function from guis.lua, which generates all GUI elements in the createProfile state
 
@@ -83,6 +85,14 @@ function love.draw()
 	elseif gamestate == "profileSelect" then
 		lg.drawq(bgImage, bg, 0, 0)
 	elseif gamestate == "createProfile" then
+		lg.drawq(bgImage, bg, 0, 0)
+	elseif gamestate == "help" then
+		lg.drawq(bgImage, bg, 0, 0)
+	elseif gamestate == "options" then
+		lg.drawq(bgImage, bg, 0, 0)
+	elseif gamestate == "langs" then 
+		lg.drawq(bgImage, bg, 0, 0)
+	elseif gamestate == "credits" then 
 		lg.drawq(bgImage, bg, 0, 0)
 	end
 

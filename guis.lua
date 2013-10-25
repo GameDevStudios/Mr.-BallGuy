@@ -64,6 +64,22 @@ function mainmenu()
 	end
 end
 
+function credits()
+	local backButton = loveframes.Create("button")
+
+	backButton:SetSize(150, 30)
+	backButton:SetText("Back to Main Menu")
+	backButton:SetState("credits")
+	backButton:CenterX()
+	backButton:SetY(screenHeight/2-30/2+250)
+	backButton.OnClick = function(object)
+		gamestate = "startmenu"
+		loveframes.SetState("startmenu")
+	end
+end
+
+
+
 function profileSelect()
 	local profilesFrame = loveframes.Create("frame")
 
@@ -102,7 +118,7 @@ function createProfile()
 	local createProfileButton = loveframes.Create("button", createProfileFrame)
 	local backButton = loveframes.Create("button", createProfileFrame)
 
-	local profileNameTextbox = loveframes.Create("textinput", creareProfileFrame)
+	local profileNameTextbox = loveframes.Create("textinput", createProfileFrame)
 
 	createProfileFrame:SetSize(screenWidth-50, screenHeight-50)
 	createProfileFrame:SetName("Create Profile")
@@ -128,4 +144,8 @@ function createProfile()
 		gamestate = "profileSelect"
 		loveframes.SetState("profileSelect")
 	end
+
+	profileNameTextbox:Center()
+	profileNameTextbox:SetSize( (createProfileFrame:GetWidth()/2-50/2), 25 )
+	profileNameTextbox:SetPos( (createProfileFrame:GetWidth()/2-profileNameTextbox:GetWidth()/2), (createProfileFrame:GetHeight()/2-profileNameTextbox:GetHeight()/2) )
 end
