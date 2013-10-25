@@ -54,7 +54,7 @@ function love.load()
 
 	bgm:setLooping(true)
 
-	bgm:play()
+	--bgm:play()
 end
 
 function love.update(dt)
