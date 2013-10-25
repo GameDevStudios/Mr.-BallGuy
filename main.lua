@@ -19,6 +19,7 @@ Gamestate list:
 
 ]]
 
+
 require("assets/libs/loveframes")
 
 require("guis")
@@ -45,7 +46,7 @@ bgImage:setWrap('repeat', 'repeat')
 
 function love.load()
 	if love._version == "0.9.0" then
-		love.window.setMode(screenWidth, screenHeight, { resizable=true })
+		love.window.setMode(800, 600, { resizable=false })
 		love.window.setTitle("Mr. BallGuy")
 	end
 
@@ -57,8 +58,6 @@ function love.load()
 end
 
 function love.update(dt)
-	bg:setViewport(0, 0, lg.getWidth(), lg.getHeight())
-
 	loveframes.update(dt)
 end
 
