@@ -28,6 +28,7 @@ lg = love.graphics
 lf = love.filesystem
 la = love.audio 
 lk = love.keyboard
+lm = love.mouse
 
 local screenWidth = love.graphics.getWidth()
 local screenHeight = love.graphics.getHeight()
@@ -42,9 +43,15 @@ local bgm = la.newSource("assets/sfx/01 A Night Of Dizzy Spells.mp3")
 
 local logo = lg.newImage("assets/img/logo.png")
 
+local mouseX, mouseY
+
+local mouseImage = lg.newImage("assets/img/mouse.png")
+
 bgImage:setWrap('repeat', 'repeat')
 
 function love.load()
+	lm.setVisible(false)
+
 	if love._version == "0.9.0" then
 		love.window.setMode(800, 600, { resizable=false })
 		love.window.setTitle("Mr. BallGuy")
@@ -58,6 +65,8 @@ function love.load()
 end
 
 function love.update(dt)
+	mouseX, mouseY = lm.getPosition()
+
 	loveframes.update(dt)
 end
 
@@ -73,6 +82,8 @@ function love.draw()
 	end
 
 	loveframes.draw()
+
+	lg.draw(mouseImage, mouseX, mouseY)
 end
 
 function love.focus(bool)

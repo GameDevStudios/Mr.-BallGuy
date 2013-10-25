@@ -7,6 +7,7 @@ function mainmenu()
 	local optionsbutton = loveframes.Create("button")
 	local helpbutton = loveframes.Create("button")
 	local quitbutton = loveframes.Create("button")
+	local langbutton = loveframes.Create("button")
 
 	startbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2-100)
 	startbutton:SetSize(150, 30)
@@ -43,6 +44,15 @@ function mainmenu()
 	helpbutton.OnClick = function(object)
 		gamestate = "help"
 		loveframes.SetState("help")
+	end
+
+	langbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2+100)
+	langbutton:SetSize(150, 30)
+	langbutton:SetText("Language")
+	langbutton:SetState("startmenu")
+	langbutton.OnClick = function(object)
+		gamestate = "langs"
+		loveframes.SetState("langs")
 	end
 
 	quitbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2+200)
