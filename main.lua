@@ -58,6 +58,7 @@ function love.load()
 
 	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
 	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state
+	createProfile() -- Calls the createProfile() function from guis.lua, which generates all GUI elements in the createProfile state
 
 	bgm:setLooping(true)
 
@@ -80,6 +81,8 @@ function love.draw()
 
 		lg.print("V" .. version, 5, screenHeight - 20)
 	elseif gamestate == "profileSelect" then
+		lg.drawq(bgImage, bg, 0, 0)
+	elseif gamestate == "createProfile" then
 		lg.drawq(bgImage, bg, 0, 0)
 	end
 

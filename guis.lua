@@ -78,9 +78,13 @@ function profileSelect()
 	profilesFrame:Center()
 
 	createProfileButton:SetSize(150, 30)
-	createProfileButton:SetText("Create Profile")
+	createProfileButton:SetText("Create New Profile")
 	createProfileButton:CenterX()
 	createProfileButton:SetY( (profilesFrame:GetHeight()/2-150/2+250) )
+	createProfileButton.OnClick = function(object)
+		gamestate = "createProfile"
+		loveframes.SetState("createProfile")
+	end
 
 	backButton:SetSize(150, 30)
 	backButton:SetText("Back to Main Menu")
@@ -89,5 +93,39 @@ function profileSelect()
 	backButton.OnClick = function(object)
 		gamestate = "startmenu"
 		loveframes.SetState("startmenu")
+	end
+end
+
+function createProfile()
+	local createProfileFrame = loveframes.Create("frame")
+
+	local createProfileButton = loveframes.Create("button", createProfileFrame)
+	local backButton = loveframes.Create("button", createProfileFrame)
+
+	local profileNameTextbox = loveframes.Create("textinput", creareProfileFrame)
+
+	createProfileFrame:SetSize(screenWidth-50, screenHeight-50)
+	createProfileFrame:SetName("Create Profile")
+	createProfileFrame:SetState("createProfile")
+	createProfileFrame:SetDraggable(false)
+	createProfileFrame:ShowCloseButton(false)
+	createProfileFrame:Center()
+
+	createProfileButton:SetSize(150, 30)
+	createProfileButton:SetText("Create Profile")
+	createProfileButton:CenterX()
+	createProfileButton:SetY( (createProfileFrame:GetHeight()/2-150/2+250) )
+	createProfileButton.OnClick = function(object)
+		-- Do later
+		-- This will be fun xD
+	end
+
+	backButton:SetSize(150, 30)
+	backButton:SetText("Back to Profile Select")
+	backButton:CenterX()
+	backButton:SetY( (createProfileFrame:GetHeight()/2-150/2+300) )
+	backButton.OnClick = function(object)
+		gamestate = "profileSelect"
+		loveframes.SetState("profileSelect")
 	end
 end
