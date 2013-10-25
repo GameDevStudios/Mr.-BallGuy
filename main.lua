@@ -65,7 +65,7 @@ function love.load()
 
 	bgm:setLooping(true)
 
-	--bgm:play()
+	bgm:play()
 
 	lg.setFont(font20)
 end
@@ -99,7 +99,17 @@ function love.draw()
 		lg.drawq(bgImage, bg, 0, 0)
 
 		lg.setFont(font70)
+		
 		lg.print("CREDITS", screenWidth/2-font70:getWidth("CREDITS")/2, screenHeight/2-font70:getHeight("CREDITS")/2-250)
+
+		lg.setFont(font20)
+		
+		lg.print("Programming - Eamonn Rea", screenWidth/2-font20:getWidth("Programming - Eamonn Rea")/2, screenHeight/2-font20:getHeight("Programming - Eamonn Rea")/2-170)
+		lg.print("Music - OpenGameArt, Eric Skiff", screenWidth/2-font20:getWidth("Music - OpenGameArt, Eric Skiff")/2, screenHeight/2-font20:getHeight("Music - OpenGameArt, Eric Skiff")/2-150)
+		lg.print("Images - Famitsu, Ryan Griffin, Eamonn Rea, OpenGameArt", screenWidth/2-font20:getWidth("Images - Famitsu, Ryan Griffin, Eamonn Rea, OpenGameArt")/2, screenHeight/2-font20:getHeight("Images - Famitsu, Ryan Griffin, Eamonn Rea, OpenGameArt")/2-130)
+		lg.print("MiddleClass (Class System) - Kikito", screenWidth/2-font20:getWidth("MiddleClass (Class System) - Kikito")/2, screenHeight/2-font20:getHeight("MiddleClass (Class System) - Kikito")/2-110)
+		lg.print("LoveFrames (GUI System) - Kenny Shields/Nikolai Resokav", screenWidth/2-font20:getWidth("LöveFrames (GUI System) - Kenny Shields/Nikolai Resokav")/2, screenHeight/2-font20:getHeight("LöveFrames (GUI System) - Kenny Shields/Nikolai Resokav")/2-90)
+		lg.print("LoveAchievements (Achievements System) - LiquidHelium", screenWidth/2-font20:getWidth("LoveAchievements (Achievements System) - LiquidHelium")/2, screenHeight/2-font20:getHeight("LoveAchievements (Achievements System) - LiquidHelium")/2-70)
 	end
 
 	loveframes.draw()
