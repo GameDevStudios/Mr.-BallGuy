@@ -47,7 +47,11 @@ local mouseX, mouseY
 
 local mouseImage = lg.newImage("assets/img/mouse.png")
 
+local version = "0.1"
+
 bgImage:setWrap('repeat', 'repeat')
+
+font20 = lg.newFont("assets/fonts/font.ttf", 20)
 
 function love.load()
 	lm.setVisible(false)
@@ -62,6 +66,8 @@ function love.load()
 	bgm:setLooping(true)
 
 	--bgm:play()
+
+	lg.setFont(font20)
 end
 
 function love.update(dt)
@@ -73,12 +79,14 @@ end
 function love.draw()
 	if gamestate == "startmenu" then
 		if love._version == "0.9.0" then
-			love.graphics.draw(bgImage, bg, 0, 0)
+			lg.draw(bgImage, bg, 0, 0)
 		else
-			love.graphics.drawq(bgImage, bg, 0, 0)
+			lg.drawq(bgImage, bg, 0, 0)
 		end
 
-		love.graphics.draw(logo, lg.getWidth()/2-logo:getWidth()/2, lg.getHeight()/2-logo:getHeight()/2-200)
+		lg.draw(logo, lg.getWidth()/2-logo:getWidth()/2, lg.getHeight()/2-logo:getHeight()/2-200)
+
+		lg.print("V " .. version, 5, screenHeight - 20)
 	end
 
 	loveframes.draw()
