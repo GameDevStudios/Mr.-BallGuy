@@ -52,6 +52,7 @@ local version = "0.1 ALPHA"
 bgImage:setWrap('repeat', 'repeat')
 
 font20 = lg.newFont("assets/fonts/font.ttf", 20)
+font70 = lg.newFont("assets/fonts/font.ttf", 70)
 
 function love.load()
 	lm.setVisible(false)
@@ -81,6 +82,8 @@ function love.draw()
 
 		lg.draw(logo, lg.getWidth()/2-logo:getWidth()/2, lg.getHeight()/2-logo:getHeight()/2-200)
 
+		lg.setFont(font20)
+
 		lg.print("V" .. version, 5, screenHeight - 20)
 	elseif gamestate == "profileSelect" then
 		lg.drawq(bgImage, bg, 0, 0)
@@ -94,6 +97,9 @@ function love.draw()
 		lg.drawq(bgImage, bg, 0, 0)
 	elseif gamestate == "credits" then 
 		lg.drawq(bgImage, bg, 0, 0)
+
+		lg.setFont(font70)
+		lg.print("CREDITS", screenWidth/2-font70:getWidth("CREDITS")/2, screenHeight/2-font70:getHeight("CREDITS")/2-250)
 	end
 
 	loveframes.draw()
