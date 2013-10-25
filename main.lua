@@ -47,7 +47,7 @@ local mouseX, mouseY
 
 local mouseImage = lg.newImage("assets/img/mouse.png")
 
-local version = "0.1"
+local version = "0.1 ALPHA"
 
 bgImage:setWrap('repeat', 'repeat')
 
@@ -56,12 +56,8 @@ font20 = lg.newFont("assets/fonts/font.ttf", 20)
 function love.load()
 	lm.setVisible(false)
 
-	if love._version == "0.9.0" then
-		love.window.setMode(800, 600, { resizable=false })
-		love.window.setTitle("Mr. BallGuy")
-	end
-
-	mainmenu() -- Calls the mainmenu() function from guis.lua
+	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
+	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state
 
 	bgm:setLooping(true)
 
@@ -78,15 +74,13 @@ end
 
 function love.draw()
 	if gamestate == "startmenu" then
-		if love._version == "0.9.0" then
-			lg.draw(bgImage, bg, 0, 0)
-		else
-			lg.drawq(bgImage, bg, 0, 0)
-		end
+		lg.drawq(bgImage, bg, 0, 0)
 
 		lg.draw(logo, lg.getWidth()/2-logo:getWidth()/2, lg.getHeight()/2-logo:getHeight()/2-200)
 
-		lg.print("V " .. version, 5, screenHeight - 20)
+		lg.print("V" .. version, 5, screenHeight - 20)
+	elseif gamestate == "profileSelect" then
+		lg.drawq(bgImage, bg, 0, 0)
 	end
 
 	loveframes.draw()

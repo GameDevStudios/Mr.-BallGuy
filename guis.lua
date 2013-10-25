@@ -14,8 +14,8 @@ function mainmenu()
 	startbutton:SetText("Play")
 	startbutton:SetState("startmenu")
 	startbutton.OnClick = function(object) 
-		gamestate = "playing"
-		loveframes.SetState("playing")
+		gamestate = "profileSelect"
+		loveframes.SetState("profileSelect")
 	end
 
 	creditsbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2-50)
@@ -61,5 +61,33 @@ function mainmenu()
 	quitbutton:SetState("startmenu")
 	quitbutton.OnClick = function(object)
 		love.quit()
+	end
+end
+
+function profileSelect()
+	local profilesFrame = loveframes.Create("frame")
+
+	local createProfileButton = loveframes.Create("button", profilesFrame)
+	local backButton = loveframes.Create("button", profilesFrame)
+
+	profilesFrame:SetSize(screenWidth-50, screenHeight-50)
+	profilesFrame:SetName("Profile Select")
+	profilesFrame:SetState("profileSelect")
+	profilesFrame:SetDraggable(false)
+	profilesFrame:ShowCloseButton(false)
+	profilesFrame:Center()
+
+	createProfileButton:SetSize(150, 30)
+	createProfileButton:SetText("Create Profile")
+	createProfileButton:CenterX()
+	createProfileButton:SetY( (profilesFrame:GetHeight()/2-150/2+250) )
+
+	backButton:SetSize(150, 30)
+	backButton:SetText("Back to Main Menu")
+	backButton:CenterX()
+	backButton:SetY( (profilesFrame:GetHeight()/2-150/2+300) )
+	backButton.OnClick = function(object)
+		gamestate = "startmenu"
+		loveframes.SetState("startmenu")
 	end
 end
