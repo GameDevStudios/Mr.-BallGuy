@@ -53,6 +53,7 @@ bgImage:setWrap('repeat', 'repeat')
 
 font20 = lg.newFont("assets/fonts/font.ttf", 20)
 font70 = lg.newFont("assets/fonts/font.ttf", 70)
+font40 = lg.newFont("assets/fonts/font.ttf", 40)
 
 function love.load()
 	lm.setVisible(false)
@@ -65,7 +66,7 @@ function love.load()
 
 	bgm:setLooping(true)
 
-	bgm:play()
+	--bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
 
 	lg.setFont(font20)
 end
@@ -91,6 +92,16 @@ function love.draw()
 		lg.drawq(bgImage, bg, 0, 0)
 	elseif gamestate == "help" then
 		lg.drawq(bgImage, bg, 0, 0)
+
+		lg.setFont(font70)
+
+		lg.print("HELP", screenWidth/2-font70:getWidth("HELP")/2, screenHeight/2-font70:getHeight("HELP")/2-250)
+
+		lg.setFont(font40)
+
+		lg.print("HOW TO PLAY", screenWidth/2-font70:getWidth("HOW TO PLAY")/2-100, screenHeight/2-font70:getHeight("HOW TO PLAY")/2-130)
+
+		--lg.print("Mr. BallGuy is a very simple game. The aim of the game is to collect coins and dodge balls.")
 	elseif gamestate == "options" then
 		lg.drawq(bgImage, bg, 0, 0)
 	elseif gamestate == "langs" then 
