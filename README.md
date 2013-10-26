@@ -10,7 +10,8 @@ It was written in Lua, and written by Eamonn Rea.
 Current Version: 1.0
 Current Development Version: 1.1-ALPHA0.1
 
-**CREDITS: **
+CREDITS:
+---------
 
 Eric Skiff, OpenGameArt - Music 
 
