@@ -66,7 +66,7 @@ function love.load()
 
 	bgm:setLooping(true)
 
-	--bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
+	bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
 
 	lg.setFont(font20)
 end
@@ -99,9 +99,13 @@ function love.draw()
 
 		lg.setFont(font40)
 
-		lg.print("HOW TO PLAY", screenWidth/2-font70:getWidth("HOW TO PLAY")/2-100, screenHeight/2-font70:getHeight("HOW TO PLAY")/2-130)
+		lg.print("HOW TO PLAY", 50, screenHeight/2-font70:getHeight("HOW TO PLAY")/2-130)
 
-		--lg.print("Mr. BallGuy is a very simple game. The aim of the game is to collect coins and dodge balls.")
+		lg.setFont(font20)
+
+		lg.print("Move Left: A", 50, screenHeight/2-font70:getHeight("Move Left: A")/2-80) -- Edit later for custom controls
+		lg.print("Move Right: D", 50, screenHeight/2-font70:getHeight("Move Right: D")/2-60) -- Edit later for custom controls
+		lg.print("Jump: SPACE", 50, screenHeight/2-font70:getHeight("Jump: SPACE")/2-40) -- Edit later for custom controls
 	elseif gamestate == "options" then
 		lg.drawq(bgImage, bg, 0, 0)
 	elseif gamestate == "langs" then 
