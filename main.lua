@@ -77,8 +77,10 @@ function love.load()
 
 	bgm:setLooping(true)
 
+	bgm:setVolume(.3)
+
 	if music then
-		bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
+		--bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
 	end
 
 	lg.setFont(font20)

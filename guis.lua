@@ -280,6 +280,8 @@ function createProfile()
 
 	local profileNameTextbox = loveframes.Create("textinput", createProfileFrame)
 
+	local profileNameHeader = loveframes.Create("text", createProfileFrame)
+
 	createProfileFrame:SetSize(screenWidth-50, screenHeight-50)
 	createProfileFrame:SetName("Create Profile")
 	createProfileFrame:SetState("createProfile")
@@ -320,4 +322,11 @@ function createProfile()
 	profileNameTextbox:Center()
 	profileNameTextbox:SetSize( (createProfileFrame:GetWidth()/2-50/2), 25 )
 	profileNameTextbox:SetPos( (createProfileFrame:GetWidth()/2-profileNameTextbox:GetWidth()/2), (createProfileFrame:GetHeight()/2-profileNameTextbox:GetHeight()/2) )
+
+	profileNameHeader:SetText("PROFILE NAME")
+	profileNameHeader:SetShadow(true)
+	profileNameHeader:SetFont(font40)
+	profileNameHeader:SetShadowColor( { 154, 154, 154 } )
+	profileNameHeader:CenterX()
+	profileNameHeader:SetY( createProfileFrame:GetHeight()/2-font40:getHeight("PROFILE NAME")-50 )
 end
