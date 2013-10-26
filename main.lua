@@ -16,6 +16,8 @@ Gamestate list:
 • options
 • help
 • paused
+• profileSelect
+• createProfile
 
 ]]
 
