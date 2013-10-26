@@ -60,6 +60,8 @@ function love.load()
 
 	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
 	credits() -- Calls the credits() function from guis.lua, which generates all the GUI elements in the credits state
+	help() -- Calls the help() function from guis.lua, which generates all of the GUI elements in the help state
+	options() -- Calls the options() function from guis.lua, which generates all of the GUI elements in the options state
 
 	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state
 	createProfile() -- Calls the createProfile() function from guis.lua, which generates all GUI elements in the createProfile state
@@ -108,6 +110,10 @@ function love.draw()
 		lg.print("Jump: SPACE", 50, screenHeight/2-font70:getHeight("Jump: SPACE")/2-40) -- Edit later for custom controls
 	elseif gamestate == "options" then
 		lg.drawq(bgImage, bg, 0, 0)
+
+		lg.setFont(font70)
+
+		lg.print("OPTIONS", screenWidth/2-font70:getWidth("OPTIONS")/2, screenHeight/2-font70:getHeight("OPTIONS")/2-250)
 	elseif gamestate == "langs" then 
 		lg.drawq(bgImage, bg, 0, 0)
 	elseif gamestate == "credits" then 

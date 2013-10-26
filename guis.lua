@@ -78,6 +78,33 @@ function credits()
 	end
 end
 
+function help()
+	local backButton = loveframes.Create("button")
+
+	backButton:SetSize(150, 30)
+	backButton:SetText("Back to Main Menu")
+	backButton:CenterX()
+	backButton:SetState("help")
+	backButton:SetY( screenHeight/2-30/2+250 )
+	backButton.OnClick = function(object)
+		gamestate = "startmenu"
+		loveframes.SetState("startmenu")
+	end
+end
+
+function options()
+	local optionsFrame = loveframes.Create("frame")
+
+	local soundButton = loveframes.Create("button")
+
+	optionsFrame:SetSize(screenWidth-50, screenHeight-50)
+	optionsFrame:SetName("Options")
+	optionsFrame:SetState("options")
+	optionsFrame:SetDraggable(false)
+	optionsFrame:ShowCloseButton(false)
+	optionsFrame:Center()
+end
+
 
 
 function profileSelect()
