@@ -47,7 +47,7 @@ local mouseX, mouseY
 
 local mouseImage = lg.newImage("assets/img/mouse.png")
 
-local version = "0.1 ALPHA"
+local version = "1.1 ALPHA"
 
 bgImage:setWrap('repeat', 'repeat')
 
