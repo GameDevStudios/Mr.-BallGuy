@@ -18,6 +18,7 @@ Gamestate list:
 • paused
 • profileSelect
 • createProfile
+• langs
 
 ]]
 
@@ -69,6 +70,7 @@ function love.load()
 	credits() -- Calls the credits() function from guis.lua, which generates all the GUI elements in the credits state
 	help() -- Calls the help() function from guis.lua, which generates all of the GUI elements in the help state
 	options(bgm, { buttonClick }) -- Calls the options() function from guis.lua, which generates all of the GUI elements in the options state
+	languages() -- Calls the languages() function from guis.lua, which generates all of the GUI elements in the langs state
 
 	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state
 	createProfile() -- Calls the createProfile() function from guis.lua, which generates all GUI elements in the createProfile state
@@ -121,10 +123,16 @@ function love.draw()
 		lg.drawq(bgImage, bg, 0, 0)
 
 		lg.setFont(font70)
-
-		lg.print("OPTIONS", screenWidth/2-font70:getWidth("OPTIONS")/2, screenHeight/2-font70:getHeight("OPTIONS")/2-250)
 	elseif gamestate == "langs" then 
 		lg.drawq(bgImage, bg, 0, 0)
+
+		lg.setFont(font70)
+
+		lg.print("LANGUAGES", screenWidth/2-font70:getWidth("LANGUAGES")/2, screenHeight/2-font70:getHeight("LANGUAGES")/2-250)
+
+		lg.setFont(font20)
+
+		lg.print("Work-in-Progress. Wont be added for a while... sorry! :(", screenWidth/2-font20:getWidth("Work-in-Progress. Wont be added for a while... sorry! :(")/2, screenHeight/2-font20:getHeight("Work-in-Progress. Wont be added for a while... sorry! :(")/2)
 	elseif gamestate == "credits" then 
 		lg.drawq(bgImage, bg, 0, 0)
 

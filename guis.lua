@@ -72,7 +72,7 @@ function mainmenu()
 
 	langbutton:SetPos(screenWidth/2-150/2, screenHeight/2-30/2+100)
 	langbutton:SetSize(150, 30)
-	langbutton:SetText("Language")
+	langbutton:SetText("Languages")
 	langbutton:SetState("startmenu")
 	langbutton.OnClick = function(object)
 		gamestate = "langs"
@@ -194,6 +194,26 @@ function options(bgm, sfxList)
 	backButton:SetText("Back to Main Menu")
 	backButton:CenterX()
 	backButton:SetY(optionsFrame:GetWidth()/2-30/2+150)
+	backButton.OnClick = function(object)
+		gamestate = "startmenu"
+		loveframes.SetState("startmenu")
+
+		if sfx then
+			buttonClick:play()
+		else
+			-- pass
+		end
+	end
+end
+
+function languages()
+	local backButton = loveframes.Create("button")
+
+	backButton:SetSize(150, 30)
+	backButton:SetText("Back to Main Menu")
+	backButton:SetState("langs")
+	backButton:CenterX()
+	backButton:SetY(screenHeight/2-30/2+250)
 	backButton.OnClick = function(object)
 		gamestate = "startmenu"
 		loveframes.SetState("startmenu")
