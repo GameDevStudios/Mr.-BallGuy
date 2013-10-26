@@ -92,10 +92,11 @@ function help()
 	end
 end
 
-function options()
+function options(bgm)
 	local optionsFrame = loveframes.Create("frame")
 
-	local soundButton = loveframes.Create("button")
+	local soundButton = loveframes.Create("button", optionsFrame)
+	local backButton = loveframes.Create("button", optionsFrame)
 
 	optionsFrame:SetSize(screenWidth-50, screenHeight-50)
 	optionsFrame:SetName("Options")
@@ -103,6 +104,31 @@ function options()
 	optionsFrame:SetDraggable(false)
 	optionsFrame:ShowCloseButton(false)
 	optionsFrame:Center()
+
+	soundButton:SetSize(650, 30)
+	soundButton:SetText("Music: " .. tostring(music))
+	soundButton:CenterX()
+	soundButton:SetY(optionsFrame:GetHeight()/2-30/2-220)
+	soundButton.OnClick = function(object)
+		music = not music
+
+		soundButton:SetText("Music: " .. tostring(music))
+
+		if not music then
+			bgm:pause()
+		else
+			bgm:play()
+		end
+	end
+
+	backButton:SetSize(150, 30)
+	backButton:SetText("Back to Main Menu")
+	backButton:CenterX()
+	backButton:SetY(optionsFrame:GetWidth()/2-30/2+150)
+	backButton.OnClick = function(object)
+		gamestate = "startmenu"
+		loveframes.SetState("startmenu")
+	end
 end
 
 
