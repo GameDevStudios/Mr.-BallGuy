@@ -26,6 +26,7 @@ Gamestate list:
 require("assets/libs/loveframes")
 
 require("guis")
+require("savePreferences")
 
 lg = love.graphics
 lf = love.filesystem
@@ -33,8 +34,10 @@ la = love.audio
 lk = love.keyboard
 lm = love.mouse
 
-music = true
-sfx = true
+prefs = {
+	music = true,
+	sfx = true,
+}
 
 local screenWidth = love.graphics.getWidth()
 local screenHeight = love.graphics.getHeight()
@@ -64,6 +67,9 @@ font70 = lg.newFont("assets/fonts/font.ttf", 70)
 font40 = lg.newFont("assets/fonts/font.ttf", 40)
 
 function love.load()
+	savePrefs()
+	loadPrefs()
+
 	lm.setVisible(false)
 
 	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
@@ -79,7 +85,7 @@ function love.load()
 
 	bgm:setVolume(.3)
 
-	if music then
+	if prefs.music then
 		--bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
 	end
 

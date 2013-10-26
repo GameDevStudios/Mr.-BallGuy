@@ -17,7 +17,7 @@ function mainmenu()
 		gamestate = "profileSelect"
 		loveframes.SetState("profileSelect")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -32,7 +32,7 @@ function mainmenu()
 		gamestate = "credits"
 		loveframes.SetState("credits")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -48,7 +48,7 @@ function mainmenu()
 		gamestate = "options"
 		loveframes.SetState("options")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -63,7 +63,7 @@ function mainmenu()
 		gamestate = "help"
 		loveframes.SetState("help")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -78,10 +78,10 @@ function mainmenu()
 		gamestate = "langs"
 		loveframes.SetState("langs")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
-			-- pass
+			--prefs. pass
 		end
 	end
 
@@ -92,7 +92,7 @@ function mainmenu()
 	quitbutton.OnClick = function(object)
 		love.quit()
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -112,7 +112,7 @@ function credits()
 		gamestate = "startmenu"
 		loveframes.SetState("startmenu")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -132,7 +132,7 @@ function help()
 		gamestate = "startmenu"
 		loveframes.SetState("startmenu")
 		
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -155,21 +155,23 @@ function options(bgm, sfxList)
 	optionsFrame:Center()
 
 	soundButton:SetSize(650, 30)
-	soundButton:SetText("Music: " .. tostring(music))
+	soundButton:SetText("Music: " .. tostring(prefs.music))
 	soundButton:CenterX()
 	soundButton:SetY(optionsFrame:GetHeight()/2-30/2-220)
 	soundButton.OnClick = function(object)
-		music = not music
+		prefs.music = not prefs.music
 
-		soundButton:SetText("Music: " .. tostring(music))
+		savePrefs()
 
-		if not music then
+		soundButton:SetText("Music: " .. tostring(prefs.music))
+
+		if not prefs.music then
 			bgm:pause()
 		else
 			bgm:play()
 		end
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -177,13 +179,15 @@ function options(bgm, sfxList)
 	end
 
 	sfxButton:SetSize(650, 30)
-	sfxButton:SetText("SFX: " .. tostring(sfx))
+	sfxButton:SetText("SFX: " .. tostring(prefs.sfx))
 	sfxButton:CenterX()
 	sfxButton:SetY(optionsFrame:GetHeight()/2-30/2-170)
 	sfxButton.OnClick = function(object)
-		sfx = not sfx
+		prefs.sfx = not prefs.sfx
 
-		sfxButton:SetText("SFX: " .. tostring(sfx))
+		savePrefs()
+
+		sfxButton:SetText("SFX: " .. tostring(prefs.sfx))
 
 		for sfx,_ in ipairs(sfxList) do
 			sfxList[sfx]:stop()
@@ -198,7 +202,7 @@ function options(bgm, sfxList)
 		gamestate = "startmenu"
 		loveframes.SetState("startmenu")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -218,7 +222,7 @@ function languages()
 		gamestate = "startmenu"
 		loveframes.SetState("startmenu")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -232,6 +236,7 @@ function profileSelect()
 	local profilesFrame = loveframes.Create("frame")
 
 	local createProfileButton = loveframes.Create("button", profilesFrame)
+	local playAnon = loveframes.Create("button", profilesFrame)
 	local backButton = loveframes.Create("button", profilesFrame)
 
 	profilesFrame:SetSize(screenWidth-50, screenHeight-50)
@@ -244,27 +249,33 @@ function profileSelect()
 	createProfileButton:SetSize(150, 30)
 	createProfileButton:SetText("Create New Profile")
 	createProfileButton:CenterX()
-	createProfileButton:SetY( (profilesFrame:GetHeight()/2-150/2+250) )
+	createProfileButton:SetY( (profilesFrame:GetHeight()/2-30/2+150) )
 	createProfileButton.OnClick = function(object)
 		gamestate = "createProfile"
 		loveframes.SetState("createProfile")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
 		end
 	end
 
+	playAnon:SetSize(150, 30)
+	playAnon:SetText("Play without saving")
+	playAnon:CenterX()
+	playAnon:SetY( (profilesFrame:GetHeight()/2-30/2+200) )
+
+
 	backButton:SetSize(150, 30)
 	backButton:SetText("Back to Main Menu")
 	backButton:CenterX()
-	backButton:SetY( (profilesFrame:GetHeight()/2-150/2+300) )
+	backButton:SetY( (profilesFrame:GetHeight()/2-30/2+250) )
 	backButton.OnClick = function(object)
 		gamestate = "startmenu"
 		loveframes.SetState("startmenu")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -297,7 +308,7 @@ function createProfile()
 		-- Do later
 		-- This will be fun xD
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
@@ -312,7 +323,7 @@ function createProfile()
 		gamestate = "profileSelect"
 		loveframes.SetState("profileSelect")
 
-		if sfx then
+		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
