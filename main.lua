@@ -31,6 +31,7 @@ lk = love.keyboard
 lm = love.mouse
 
 music = true
+sfx = true
 
 local screenWidth = love.graphics.getWidth()
 local screenHeight = love.graphics.getHeight()
@@ -42,6 +43,8 @@ local bgImage = lg.newImage("assets/img/background.png")
 local bg = lg.newQuad(0, 0, lg.getWidth(), lg.getHeight(), bgImage:getWidth(), bgImage:getHeight())
 
 local bgm = la.newSource("assets/sfx/01 A Night Of Dizzy Spells.mp3")
+
+buttonClick = la.newSource("assets/sfx/menu rollover.mp3")
 
 local logo = lg.newImage("assets/img/logo.png")
 
@@ -63,7 +66,7 @@ function love.load()
 	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
 	credits() -- Calls the credits() function from guis.lua, which generates all the GUI elements in the credits state
 	help() -- Calls the help() function from guis.lua, which generates all of the GUI elements in the help state
-	options(bgm) -- Calls the options() function from guis.lua, which generates all of the GUI elements in the options state
+	options(bgm, { buttonClick }) -- Calls the options() function from guis.lua, which generates all of the GUI elements in the options state
 
 	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state
 	createProfile() -- Calls the createProfile() function from guis.lua, which generates all GUI elements in the createProfile state
