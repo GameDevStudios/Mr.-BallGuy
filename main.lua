@@ -67,10 +67,10 @@ font70 = lg.newFont("assets/fonts/font.ttf", 70)
 font40 = lg.newFont("assets/fonts/font.ttf", 40)
 
 function love.load()
-	if not love.filesystem.exists("prefs/prefs.lua") then
+	if not lf.exists("prefs/prefs.lua") then
 		savePrefs()
 	else 
-		love.filesystem.load("prefs/prefs.lua")()
+		lf.load("prefs/prefs.lua")()
 	end
 
 	lm.setVisible(false)
