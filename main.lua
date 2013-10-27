@@ -193,5 +193,7 @@ function love.mousereleased(x, y, button)
 end 
 
 function love.quit()
+	savePrefs()
+	
 	love.event.quit()
 end

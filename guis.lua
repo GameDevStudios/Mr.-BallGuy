@@ -147,6 +147,12 @@ function options(bgm, sfxList)
 	local sfxButton = loveframes.Create("button", optionsFrame)
 	local backButton = loveframes.Create("button", optionsFrame)
 
+	local musicSlider = loveframes.Create("slider", optionsFrame)
+	local sfxSlider = loveframes.Create("slider", optionsFrame)
+
+	local musicSliderText = loveframes.Create("text", optionsFrame)
+	local sfxSliderText = loveframes.Create("text", optionsFrame)
+
 	optionsFrame:SetSize(screenWidth-50, screenHeight-50)
 	optionsFrame:SetName("Options")
 	optionsFrame:SetState("options")
@@ -193,6 +199,30 @@ function options(bgm, sfxList)
 			sfxList[sfx]:stop()
 		end
 	end
+
+	musicSlider:CenterY()
+	musicSlider:SetX(optionsFrame:GetWidth()/2-600/2)
+	musicSlider:SetMinMax(0, 100)
+	musicSlider:SetWidth(600)
+
+	sfxSlider:SetY(optionsFrame:GetHeight()/2-100)
+	sfxSlider:SetX(optionsFrame:GetWidth()/2-600/2)
+	sfxSlider:SetMinMax(0, 100)
+	sfxSlider:SetWidth(600)
+
+	sfxSliderText:SetText("SFX Volume")
+	sfxSliderText:SetShadow(true)
+	sfxSliderText:SetFont(font40)
+	sfxSliderText:SetShadowColor( { 154, 154, 154 } )
+	sfxSliderText:CenterX()
+	sfxSliderText:SetY(optionsFrame:GetHeight()/2-font40:getHeight("SFX Volume")/2-120)
+
+	musicSliderText:SetText("Music Volume")
+	musicSliderText:SetShadow(true)
+	musicSliderText:SetFont(font40)
+	musicSliderText:SetShadowColor( { 154, 154, 154 } )
+	musicSliderText:CenterX()
+	musicSliderText:SetY(optionsFrame:GetHeight()/2-font40:getHeight("Music Volume")/2-25)
 
 	backButton:SetSize(150, 30)
 	backButton:SetText("Back to Main Menu")
