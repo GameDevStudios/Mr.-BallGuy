@@ -10,9 +10,3 @@ function savePrefs()
 	prefsFile:write("prefs.music = " .. tostring(prefs.music) .. "\n")
 	prefsFile:write("prefs.sfx = " .. tostring(prefs.sfx) .. "\n")
 end
-
-function loadPrefs()
-	for lines in love.filesystem.lines("prefs/prefs.lua") do 
-		table.insert( prefs, lines )
-	end
-end

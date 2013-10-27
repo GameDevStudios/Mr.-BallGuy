@@ -67,8 +67,11 @@ font70 = lg.newFont("assets/fonts/font.ttf", 70)
 font40 = lg.newFont("assets/fonts/font.ttf", 40)
 
 function love.load()
-	savePrefs()
-	loadPrefs()
+	if not love.filesystem.exists("prefs/prefs.lua") then
+		savePrefs()
+	else 
+		love.filesystem.load("prefs/prefs.lua")()
+	end
 
 	lm.setVisible(false)
 
@@ -86,7 +89,7 @@ function love.load()
 	bgm:setVolume(.3)
 
 	if prefs.music then
-		--bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
+		bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
 	end
 
 	lg.setFont(font20)
