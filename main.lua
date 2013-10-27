@@ -34,9 +34,16 @@ la = love.audio
 lk = love.keyboard
 lm = love.mouse
 
+local bgm = la.newSource("assets/sfx/01 A Night Of Dizzy Spells.mp3")
+buttonClick = la.newSource("assets/sfx/menu rollover.mp3")
+
 prefs = {
 	music = true,
 	sfx = true,
+}
+
+sfx = {
+	buttonClick = buttonClick,
 }
 
 local screenWidth = love.graphics.getWidth()
@@ -47,10 +54,6 @@ loveframes.SetState("startmenu")
 
 local bgImage = lg.newImage("assets/img/background.png")
 local bg = lg.newQuad(0, 0, lg.getWidth(), lg.getHeight(), bgImage:getWidth(), bgImage:getHeight())
-
-local bgm = la.newSource("assets/sfx/01 A Night Of Dizzy Spells.mp3")
-
-buttonClick = la.newSource("assets/sfx/menu rollover.mp3")
 
 local logo = lg.newImage("assets/img/logo.png")
 

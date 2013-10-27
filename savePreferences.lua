@@ -9,4 +9,5 @@ function savePrefs()
 
 	prefsFile:write("prefs.music = " .. tostring(prefs.music) .. "\n")
 	prefsFile:write("prefs.sfx = " .. tostring(prefs.sfx) .. "\n")
+	prefsFile:write("")
 end
