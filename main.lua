@@ -75,6 +75,14 @@ function love.load()
 
 	lm.setVisible(false)
 
+	bgm:setLooping(true)
+
+	bgm:setVolume(.3)
+
+	if prefs.music then
+		bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
+	end
+
 	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
 	credits() -- Calls the credits() function from guis.lua, which generates all the GUI elements in the credits state
 	help() -- Calls the help() function from guis.lua, which generates all of the GUI elements in the help state
@@ -83,14 +91,6 @@ function love.load()
 
 	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state
 	createProfile() -- Calls the createProfile() function from guis.lua, which generates all GUI elements in the createProfile state
-
-	bgm:setLooping(true)
-
-	bgm:setVolume(.3)
-
-	if prefs.music then
-		bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
-	end
 
 	lg.setFont(font20)
 end

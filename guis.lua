@@ -202,13 +202,22 @@ function options(bgm, sfxList)
 
 	musicSlider:CenterY()
 	musicSlider:SetX(optionsFrame:GetWidth()/2-600/2)
-	musicSlider:SetMinMax(0, 100)
+	musicSlider:SetMinMax(0, 1)
 	musicSlider:SetWidth(600)
+	musicSlider:SetValue( bgm:getVolume() )
+	musicSlider.OnValueChanged = function(object)
+		bgm:setVolume( object:GetValue() )
+	end
 
 	sfxSlider:SetY(optionsFrame:GetHeight()/2-100)
 	sfxSlider:SetX(optionsFrame:GetWidth()/2-600/2)
 	sfxSlider:SetMinMax(0, 100)
 	sfxSlider:SetWidth(600)
+	sfxSlider.OnValueChanged = function(object)
+		for sfx,_ in ipairs(sfxList) do 
+			sfxList[sfx]:setVolume(object:GetValue())
+		end
+	end
 
 	sfxSliderText:SetText("SFX Volume")
 	sfxSliderText:SetShadow(true)
