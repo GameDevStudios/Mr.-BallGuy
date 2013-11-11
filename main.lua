@@ -34,16 +34,12 @@ la = love.audio
 lk = love.keyboard
 lm = love.mouse
 
-local bgm = la.newSource("assets/sfx/01 A Night Of Dizzy Spells.mp3")
+bgm = la.newSource("assets/sfx/01 A Night Of Dizzy Spells.mp3")
 buttonClick = la.newSource("assets/sfx/menu rollover.mp3")
 
 prefs = {
 	music = true,
 	sfx = true,
-}
-
-sfx = {
-	buttonClick = buttonClick,
 }
 
 local screenWidth = love.graphics.getWidth()
@@ -70,7 +66,8 @@ font70 = lg.newFont("assets/fonts/font.ttf", 70)
 font40 = lg.newFont("assets/fonts/font.ttf", 40)
 
 function love.load()
-	if not lf.exists("prefs/prefs.lua") then
+	if not lf.exists("prefs/prefs.lua") then -- Checks if there is no preferences file, so in essence checks if there are no preferences
+		bgm:setVolume(.3)
 		savePrefs()
 	else 
 		lf.load("prefs/prefs.lua")()
@@ -79,8 +76,6 @@ function love.load()
 	lm.setVisible(false)
 
 	bgm:setLooping(true)
-
-	bgm:setVolume(.3)
 
 	if prefs.music then
 		bgm:play() -- I usually disable this, because I like to listen to music whist programming. If this is ever disabled, just edit this line :-)
@@ -96,6 +91,10 @@ function love.load()
 	createProfile() -- Calls the createProfile() function from guis.lua, which generates all GUI elements in the createProfile state
 
 	lg.setFont(font20)
+
+	mouseImage:setFilter("nearest", "nearest")
+	logo:setFilter("nearest", "nearest")
+	bgImage:setFilter("nearest", "nearest")
 end
 
 function love.update(dt)
