@@ -74,7 +74,7 @@ function love.load()
 		bgm:setVolume(.3)
 		savePrefs()
 	else 
-		lf.load("prefs/prefs.lua")()
+		lf.load("prefs/prefs.lua")() -- We don't set the volume and save the preferences here because the user already has a volume defined, and it's stupid to override the preferences we just loaded
 	end
 
 

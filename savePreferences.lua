@@ -1,6 +1,6 @@
 function savePrefs(sfxList)
-	if not lf.isDirectory("prefs.lua") then 
-		lf.mkdir("prefs.lua")
+	if not lf.isDirectory("prefs") then 
+		lf.mkdir("prefs")
 	end
 
 	local prefsFile = lf.newFile("prefs/prefs.lua")
