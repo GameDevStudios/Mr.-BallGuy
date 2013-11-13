@@ -42,6 +42,10 @@ prefs = {
 	sfx = true,
 }
 
+sfx = {
+	buttonClick = buttonClick,
+}
+
 local screenWidth = love.graphics.getWidth()
 local screenHeight = love.graphics.getHeight()
 
@@ -73,6 +77,12 @@ function love.load()
 		lf.load("prefs/prefs.lua")()
 	end
 
+
+
+	for i,v in pairs(sfx) do 
+		sfx[i]:setVolume(buttonClick:getVolume())
+	end
+
 	lm.setVisible(false)
 
 	bgm:setLooping(true)
@@ -84,7 +94,7 @@ function love.load()
 	mainmenu() -- Calls the mainmenu() function from guis.lua, which generates all the GUI elemets in the mainmenu state
 	credits() -- Calls the credits() function from guis.lua, which generates all the GUI elements in the credits state
 	help() -- Calls the help() function from guis.lua, which generates all of the GUI elements in the help state
-	options(bgm, { buttonClick }) -- Calls the options() function from guis.lua, which generates all of the GUI elements in the options state
+	options(bgm, sfx) -- Calls the options() function from guis.lua, which generates all of the GUI elements in the options state
 	languages() -- Calls the languages() function from guis.lua, which generates all of the GUI elements in the langs state
 
 	profileSelect() -- Calls the profileSelect() function from guis.lua, which generates all GUI elements in the profileSelect state

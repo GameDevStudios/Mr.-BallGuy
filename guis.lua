@@ -195,8 +195,8 @@ function options(bgm, sfxList)
 
 		sfxButton:SetText("SFX: " .. tostring(prefs.sfx))
 
-		for sfx,_ in ipairs(sfxList) do
-			sfxList[sfx]:stop()
+		for i,v in pairs(sfxList) do
+			sfxList[i]:stop()
 		end
 	end
 
