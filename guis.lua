@@ -1,6 +1,8 @@
 local screenWidth = love.graphics.getWidth()
 local screenHeight = love.graphics.getHeight()
 
+local profileNameIsBlank = false
+
 function mainmenu()
 	local startbutton = loveframes.Create("button")
 	local creditsbutton = loveframes.Create("button")
@@ -352,6 +354,8 @@ function createProfile()
 		end
 
 		if profileNameTextbox:GetText() == "" then 
+			profileNameIsBlank = true
+
 			local profileNameCannotBeBlankFrame = loveframes.Create("frame") -- A very long name, but who cares? xD
 			profileNameCannotBeBlankFrame:SetSize(500, 150)
 			profileNameCannotBeBlankFrame:SetName("Alert!")
@@ -359,6 +363,7 @@ function createProfile()
 			profileNameCannotBeBlankFrame:SetState("createProfile")
 			profileNameCannotBeBlankFrame:SetDraggable(false)
 			profileNameCannotBeBlankFrame:ShowCloseButton(false)
+			profileNameCannotBeBlankFrame:SetScreenLocked(true)
 
 			local profileNameCannotBeBlankText = loveframes.Create("text", profileNameCannotBeBlankFrame)
 			profileNameCannotBeBlankText:SetPos( profileNameCannotBeBlankFrame:GetWidth()/2-font20:getWidth("Profile Name Cannot Be Blank.")/2, profileNameCannotBeBlankFrame:GetHeight()/2-font20:getHeight("Profile Name Cannot Be Blank.")/2-35 )
@@ -374,13 +379,39 @@ function createProfile()
 			profileNameCannotBeBlankOkButton:SetY( profileNameCannotBeBlankFrame:GetHeight()/2-150/2+100 )
 			profileNameCannotBeBlankOkButton.OnClick = function(object)
 				profileNameCannotBeBlankFrame:SetVisible(false)
+
+				profileNameIsBlank = false
+
 			end
 		end
 
-		if lf.exists("profiles/" .. tostring(profileNameTextbox:GetText())) then
-			--local profileNameAlreadyTakenFrame = loveframes.Create("frame")
+		if lf.exists("profiles/" .. tostring(profileNameTextbox:GetText())) and not profileNameIsBlank then
+			local profileNameAlreadyTakenFrame = loveframes.Create("frame")
+			profileNameAlreadyTakenFrame:SetName("Alert!")
+			profileNameAlreadyTakenFrame:SetSize(500, 150)
+			profileNameAlreadyTakenFrame:Center()
+			profileNameAlreadyTakenFrame:SetState("createProfile")
+			profileNameAlreadyTakenFrame:SetDraggable(false)
+			profileNameAlreadyTakenFrame:ShowCloseButton(false)
+
+			local profileNameAlreadyTakenText = loveframes.Create("text", profileNameAlreadyTakenFrame)
+			profileNameAlreadyTakenText:SetText("Sorry, that profile name is already taken.")
+			profileNameAlreadyTakenText:SetFont(font20)
+			profileNameAlreadyTakenText:CenterX()
+			profileNameAlreadyTakenText:SetY( 150/2-font20:getHeight("Sorry, that profile name is already taken.")/2-35 )
+			profileNameAlreadyTakenText:SetShadow(true)
+			profileNameAlreadyTakenText:SetShadowColor( { 154, 154, 154 } )
+
+			local profileNameAlreadyTakenOkButton = loveframes.Create("button", profileNameAlreadyTakenFrame)
+			profileNameAlreadyTakenOkButton:SetText("Ok")
+			profileNameAlreadyTakenOkButton:SetSize(150, 30)
+			profileNameAlreadyTakenOkButton:CenterX()
+			profileNameAlreadyTakenOkButton:SetY( 150/2-150/2+100 )
+			profileNameAlreadyTakenOkButton.OnClick = function(object)
+				profileNameAlreadyTakenFrame:SetVisible(false)
+			end
 		else
-			print("Fine!")
+			lf.mkdir("profiles/" .. tostring(profileNameTextbox:GetText()))
 		end
 	end
 
