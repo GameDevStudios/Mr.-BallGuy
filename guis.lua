@@ -345,13 +345,42 @@ function createProfile()
 	createProfileButton:CenterX()
 	createProfileButton:SetY( (createProfileFrame:GetHeight()/2-150/2+250) )
 	createProfileButton.OnClick = function(object)
-		-- Do later
-		-- This will be fun xD
-
 		if prefs.sfx then
 			buttonClick:play()
 		else
 			-- pass
+		end
+
+		if profileNameTextbox:GetText() == "" then 
+			local profileNameCannotBeBlankFrame = loveframes.Create("frame") -- A very long name, but who cares? xD
+			profileNameCannotBeBlankFrame:SetSize(500, 150)
+			profileNameCannotBeBlankFrame:SetName("Alert!")
+			profileNameCannotBeBlankFrame:Center()
+			profileNameCannotBeBlankFrame:SetState("createProfile")
+			profileNameCannotBeBlankFrame:SetDraggable(false)
+			profileNameCannotBeBlankFrame:ShowCloseButton(false)
+
+			local profileNameCannotBeBlankText = loveframes.Create("text", profileNameCannotBeBlankFrame)
+			profileNameCannotBeBlankText:SetPos( profileNameCannotBeBlankFrame:GetWidth()/2-font20:getWidth("Profile Name Cannot Be Blank.")/2, profileNameCannotBeBlankFrame:GetHeight()/2-font20:getHeight("Profile Name Cannot Be Blank.")/2-35 )
+			profileNameCannotBeBlankText:SetText("Profile Name Cannot Be Blank.")
+			profileNameCannotBeBlankText:SetFont(font20)
+			profileNameCannotBeBlankText:SetShadow(true)
+			profileNameCannotBeBlankText:SetShadowColor( { 154, 154, 154 } )
+		
+			local profileNameCannotBeBlankOkButton = loveframes.Create("button", profileNameCannotBeBlankFrame)
+			profileNameCannotBeBlankOkButton:SetText("Ok")
+			profileNameCannotBeBlankOkButton:SetSize(150, 30)
+			profileNameCannotBeBlankOkButton:CenterX()
+			profileNameCannotBeBlankOkButton:SetY( profileNameCannotBeBlankFrame:GetHeight()/2-150/2+100 )
+			profileNameCannotBeBlankOkButton.OnClick = function(object)
+				profileNameCannotBeBlankFrame:SetVisible(false)
+			end
+		end
+
+		if lf.exists("profiles/" .. tostring(profileNameTextbox:GetText())) then
+			--local profileNameAlreadyTakenFrame = loveframes.Create("frame")
+		else
+			print("Fine!")
 		end
 	end
 

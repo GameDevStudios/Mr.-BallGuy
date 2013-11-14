@@ -74,7 +74,13 @@ function love.load()
 		bgm:setVolume(.3)
 		savePrefs()
 	end
+
+	if not lf.exists("profiles") then -- Checks if there is no profiles file, so basically checks if there are no profiles created
+		lf.mkdir("profiles")
+	end
 	
+
+
 	lf.load("prefs/prefs.lua")() -- We don't set the volume and save the preferences here because the user already has a volume defined, and it's stupid to override the preferences we just loaded
 
 	lm.setVisible(false)
