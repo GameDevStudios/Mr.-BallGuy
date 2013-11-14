@@ -73,15 +73,9 @@ function love.load()
 	if not lf.exists("prefs/prefs.lua") then -- Checks if there is no preferences file, so in essence checks if there are no preferences
 		bgm:setVolume(.3)
 		savePrefs()
-	else 
-		lf.load("prefs/prefs.lua")() -- We don't set the volume and save the preferences here because the user already has a volume defined, and it's stupid to override the preferences we just loaded
 	end
-
-
-
-	for i,v in pairs(sfx) do 
-		sfx[i]:setVolume(buttonClick:getVolume())
-	end
+	
+	lf.load("prefs/prefs.lua")() -- We don't set the volume and save the preferences here because the user already has a volume defined, and it's stupid to override the preferences we just loaded
 
 	lm.setVisible(false)
 
@@ -205,7 +199,7 @@ function love.mousereleased(x, y, button)
 end 
 
 function love.quit()
-	savePrefs()
-	
+	savePrefs(sfx)
+
 	love.event.quit()
 end

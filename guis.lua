@@ -215,8 +215,8 @@ function options(bgm, sfxList)
 	sfxSlider:SetWidth(600)
 	sfxSlider:SetValue( buttonClick:getVolume() ) -- This could be any sound effect. They're all the same volume and always will be, unless there is an error
 	sfxSlider.OnValueChanged = function(object)
-		for sfx,_ in ipairs(sfxList) do 
-			sfxList[sfx]:setVolume(object:GetValue())
+		for i,v in pairs(sfxList) do 
+			sfxList[i]:setVolume(object:GetValue())
 		end
 	end
 
