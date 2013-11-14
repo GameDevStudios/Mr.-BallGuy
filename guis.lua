@@ -355,34 +355,6 @@ function createProfile()
 
 		if profileNameTextbox:GetText() == "" then 
 			profileNameIsBlank = true
-
-			local profileNameCannotBeBlankFrame = loveframes.Create("frame") -- A very long name, but who cares? xD
-			profileNameCannotBeBlankFrame:SetSize(500, 150)
-			profileNameCannotBeBlankFrame:SetName("Alert!")
-			profileNameCannotBeBlankFrame:Center()
-			profileNameCannotBeBlankFrame:SetState("createProfile")
-			profileNameCannotBeBlankFrame:SetDraggable(false)
-			profileNameCannotBeBlankFrame:ShowCloseButton(false)
-			profileNameCannotBeBlankFrame:SetScreenLocked(true)
-
-			local profileNameCannotBeBlankText = loveframes.Create("text", profileNameCannotBeBlankFrame)
-			profileNameCannotBeBlankText:SetPos( profileNameCannotBeBlankFrame:GetWidth()/2-font20:getWidth("Profile Name Cannot Be Blank.")/2, profileNameCannotBeBlankFrame:GetHeight()/2-font20:getHeight("Profile Name Cannot Be Blank.")/2-35 )
-			profileNameCannotBeBlankText:SetText("Profile Name Cannot Be Blank.")
-			profileNameCannotBeBlankText:SetFont(font20)
-			profileNameCannotBeBlankText:SetShadow(true)
-			profileNameCannotBeBlankText:SetShadowColor( { 154, 154, 154 } )
-		
-			local profileNameCannotBeBlankOkButton = loveframes.Create("button", profileNameCannotBeBlankFrame)
-			profileNameCannotBeBlankOkButton:SetText("Ok")
-			profileNameCannotBeBlankOkButton:SetSize(150, 30)
-			profileNameCannotBeBlankOkButton:CenterX()
-			profileNameCannotBeBlankOkButton:SetY( profileNameCannotBeBlankFrame:GetHeight()/2-150/2+100 )
-			profileNameCannotBeBlankOkButton.OnClick = function(object)
-				profileNameCannotBeBlankFrame:SetVisible(false)
-
-				profileNameIsBlank = false
-
-			end
 		end
 
 		if lf.exists("profiles/" .. tostring(profileNameTextbox:GetText())) and not profileNameIsBlank then
@@ -410,8 +382,68 @@ function createProfile()
 			profileNameAlreadyTakenOkButton.OnClick = function(object)
 				profileNameAlreadyTakenFrame:SetVisible(false)
 			end
+		elseif profileNameIsBlank == true then 
+			local profileNameCannotBeBlankFrame = loveframes.Create("frame") -- A very long name, but who cares? xD
+			profileNameCannotBeBlankFrame:SetSize(500, 150)
+			profileNameCannotBeBlankFrame:SetName("Alert!")
+			profileNameCannotBeBlankFrame:Center()
+			profileNameCannotBeBlankFrame:SetState("createProfile")
+			profileNameCannotBeBlankFrame:SetDraggable(false)
+			profileNameCannotBeBlankFrame:ShowCloseButton(false)
+			profileNameCannotBeBlankFrame:SetScreenLocked(true)
+
+			local profileNameCannotBeBlankText = loveframes.Create("text", profileNameCannotBeBlankFrame)
+			profileNameCannotBeBlankText:SetPos( profileNameCannotBeBlankFrame:GetWidth()/2-font20:getWidth("Profile Name Cannot Be Blank.")/2, profileNameCannotBeBlankFrame:GetHeight()/2-font20:getHeight("Profile Name Cannot Be Blank.")/2-35 )
+			profileNameCannotBeBlankText:SetText("Profile Name Cannot Be Blank.")
+			profileNameCannotBeBlankText:SetFont(font20)
+			profileNameCannotBeBlankText:SetShadow(true)
+			profileNameCannotBeBlankText:SetShadowColor( { 154, 154, 154 } )
+		
+			local profileNameCannotBeBlankOkButton = loveframes.Create("button", profileNameCannotBeBlankFrame)
+			profileNameCannotBeBlankOkButton:SetText("Ok")
+			profileNameCannotBeBlankOkButton:SetSize(150, 30)
+			profileNameCannotBeBlankOkButton:CenterX()
+			profileNameCannotBeBlankOkButton:SetY( profileNameCannotBeBlankFrame:GetHeight()/2-150/2+100 )
+			profileNameCannotBeBlankOkButton.OnClick = function(object)
+				profileNameCannotBeBlankFrame:SetVisible(false)
+
+				profileNameIsBlank = false
+
+			end
 		else
 			lf.mkdir("profiles/" .. tostring(profileNameTextbox:GetText()))
+
+			if lf.exists("profiles/" .. tostring(profileNameTextbox:GetText())) then
+				local createdProfileSuccessfullyFrame = loveframes.Create("frame")
+				createdProfileSuccessfullyFrame:SetName("Success!")
+				createdProfileSuccessfullyFrame:SetState("createProfile")
+				createdProfileSuccessfullyFrame:SetSize(500, 150)
+				createdProfileSuccessfullyFrame:Center()
+				createdProfileSuccessfullyFrame:SetDraggable(false)
+				createdProfileSuccessfullyFrame:ShowCloseButton(false)
+
+				local createdProfileSuccessfullyText = loveframes.Create("text", createdProfileSuccessfullyFrame)
+				createdProfileSuccessfullyText:SetText("Successfully Created Profile!")
+				createdProfileSuccessfullyText:SetFont(font20)
+				createdProfileSuccessfullyText:SetShadow(true)
+				createdProfileSuccessfullyText:SetShadowColor( { 154, 154, 154 } )
+				createdProfileSuccessfullyText:CenterX()
+				createdProfileSuccessfullyText:SetY(150/2-font20:getHeight("Successfully Created Profile!")/2-35)
+
+				local createdProfileSuccessfullyOkButton = loveframes.Create("button", createdProfileSuccessfullyFrame)
+				createdProfileSuccessfullyOkButton:SetSize(150, 30)
+				createdProfileSuccessfullyOkButton:SetText("Awesome!")
+				createdProfileSuccessfullyOkButton:CenterX()
+				createdProfileSuccessfullyOkButton:SetY( createdProfileSuccessfullyFrame:GetHeight()/2-150/2+100 )
+				createdProfileSuccessfullyOkButton.OnClick = function(object)
+					createdProfileSuccessfullyFrame:SetVisible(false)
+					
+					loveframes.SetState("profileSelect")
+					gamestate = "profileSelect"				
+				end
+			else
+				print("Profile created unsuccessfully. Please try again.")
+			end
 		end
 	end
 
